@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/frgHome">
+    <fragment
+        android:id="@+id/frgHome"
+        android:name="com.aq.lovelocal.fragment.FrgHome"
+        android:label="FrgHome"
+        tools:layout="@layout/frg_home">
+        <action
+            android:id="@+id/action_frgHome_to_frgProduct"
+            app:destination="@id/frgProduct" />
+        <action
+            android:id="@+id/action_frgHome_to_frgSearch"
+            app:destination="@id/frgSearch" />
+    </fragment>
+    <fragment
+        android:id="@+id/frgCategory"
+        android:name="com.aq.lovelocal.fragment.FrgCategory"
+        android:label="frgCategory"
+        tools:layout="@layout/frg_category"/>
+    <fragment
+        android:id="@+id/frgCart"
+        android:name="com.aq.lovelocal.fragment.FrgCart"
+        android:label="frgCart"
+        tools:layout="@layout/frg_cart" />
+    <fragment
+        android:id="@+id/frgCard"
+        android:name="com.aq.lovelocal.fragment.FrgCard"
+        android:label="frgCart"
+        tools:layout="@layout/frg_card"/>
+    <fragment
+        android:id="@+id/frgSearch"
+        android:name="com.aq.lovelocal.fragment.FrgSearch"
+        android:label="frgProduct"
+        tools:layout="@layout/frg_search"/>
+    <fragment
+        android:id="@+id/frgProduct"
+        android:name="com.aq.lovelocal.fragment.FrgProduct"
+        android:label="frgProduct"
+        tools:layout="@layout/frg_product"/>
+</navigation>
