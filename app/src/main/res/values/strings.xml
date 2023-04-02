@@ -1,17 +1,4 @@
 <resources>
-    <string name="app_name">LoveLocal</string>
-    <string name="home">Home</string>
-    <string name="category">Category</string>
-    <string name="cart">Cart</string>
-    <string name="card">Card</string>
-    <string name="dialog_permission_title">Grant permissions</string>
-    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
-    <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="app_name">Assignment</string>
     <string name="notification">Notification</string>
-    <string name="your_location">Your Location</string>
-    <string name="afternoon_greet">Good Afternoon</string>
-    <string name="evening_greet">Good Evening</string>
-    <string name="night_greet">Good Night</string>
-    <string name="morning_greet">Good Morning</string>
-    <string name="please_enable_location">Please enable location</string>
 </resources>

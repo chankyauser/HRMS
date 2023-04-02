@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.aq.lovelocal"
+        applicationId "com.aq.assignment"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -33,6 +33,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace 'com.aq.assignment'
 }
 
 dependencies {
@@ -79,4 +80,10 @@ dependencies {
     // Glide image loader
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
 }
