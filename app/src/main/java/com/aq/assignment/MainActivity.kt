@@ -10,6 +10,7 @@ import com.aq.assignment.adapter.ListAdapter
 import com.aq.assignment.databinding.ActivityMainBinding
 import com.aq.assignment.helper.Status
 import com.aq.assignment.model.UserData
+import com.aq.assignment.util.BSDetailsFragment
 import com.aq.assignment.util.DividerItemDecoration
 import com.aq.assignment.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ListAdapter
     lateinit var binding: ActivityMainBinding
     lateinit var mainViewModel: MainViewModel
-    val userData = ArrayList<UserData.Data>()
+    val userData = ArrayList<UserData>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -43,12 +44,14 @@ class MainActivity : AppCompatActivity() {
                 Status.ERROR -> {
                     if (binding.progress.isVisible)
                         binding.progress.visibility = View.GONE
-                    binding.noInternet.visibility = View.VISIBLE
-                    Toast.makeText(
-                        applicationContext,
-                        "Something went wrong, Please Try again later",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    if(userData.isEmpty()) {
+                        binding.noInternet.visibility = View.VISIBLE
+                        Toast.makeText(
+                            applicationContext,
+                            "Something went wrong, Please Try again later",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
 
@@ -59,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                     userData.addAll(users)
                     adapter.notifyDataSetChanged()
                 } else {
-                    if (!binding.noInternet.isVisible)
+                    if (!binding.noInternet.isVisible && userData.isEmpty())
                         binding.noInternet.isVisible = true
                 }
             }
@@ -71,7 +74,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleView() {
         mainViewModel.getUserData()
-        adapter = ListAdapter(this,userData)
+        adapter = ListAdapter(this,userData){
+            BSDetailsFragment.newInstance(it).show(supportFragmentManager,"Data")
+        }
         binding.rvUserList.adapter = adapter
         binding.rvUserList.addItemDecoration(DividerItemDecoration(5,applicationContext))
     }

@@ -16,10 +16,10 @@ import dagger.Provides
 interface UserDao {
 
     @Query("SELECT * FROM users")
-    fun getAll(): LiveData<List<UserData.Data>>
+    fun getAll(): LiveData<List<UserData>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<UserData.Data>)
+    fun insertAll(users: List<UserData>)
 
     @Query("DELETE FROM users")
     fun deleteAll()

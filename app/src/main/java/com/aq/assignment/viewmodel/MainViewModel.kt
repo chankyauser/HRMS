@@ -17,7 +17,7 @@ class MainViewModel  @Inject constructor(
     private val mainRepository: MainRepository
 ): ViewModel(){
 
-    var userFinalList: LiveData<List<UserData.Data>> = MutableLiveData()
+    var userFinalList: LiveData<List<UserData>> = MutableLiveData()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun fetchStudentData(){
@@ -28,8 +28,8 @@ class MainViewModel  @Inject constructor(
     }
 
 
-    private val _userData = MutableLiveData<Resource<UserData>>()
-    val data : LiveData<Resource<UserData>>
+    private val _userData = MutableLiveData<Resource<List<UserData>>>()
+    val data : LiveData<Resource<List<UserData>>>
         get() = _userData
 
     fun getUserData()  = CoroutineScope(Dispatchers.IO).launch {
@@ -39,7 +39,7 @@ class MainViewModel  @Inject constructor(
                 if (it.isSuccessful){
                     _userData.postValue(Resource.success(it.body()))
                     userDao.deleteAll()
-                    it.body()?.data?.let { it1 -> userDao.insertAll(it1) }
+                    it.body()?.let { it1 -> userDao.insertAll(it1) }
                 }else{
                     _userData.postValue(Resource.error(it.errorBody().toString(), null))
                 }

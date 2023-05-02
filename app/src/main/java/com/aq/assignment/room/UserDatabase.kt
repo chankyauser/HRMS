@@ -9,7 +9,7 @@ import com.aq.assignment.model.UserData
 /**
  * Created by AQUIB RASHID SHAIKH on 25-03-2023.
  */
-@Database(entities = [UserData.Data::class], version = 1)
+@Database(entities = [UserData::class], version = 2)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -23,7 +23,7 @@ abstract class UserDatabase : RoomDatabase() {
                     context.applicationContext,
                     UserDatabase::class.java,
                     "user_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }
