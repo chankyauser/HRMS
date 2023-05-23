@@ -8,6 +8,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ornet.hrms.BaseActivity
@@ -15,6 +16,7 @@ import com.ornet.hrms.R
 import com.ornet.hrms.adapter.EnquiryPagingAdapter
 import com.ornet.hrms.databinding.ActivityEnquiryAssignedListBinding
 import com.ornet.hrms.helper.Status
+import com.ornet.hrms.model.EnquiryCall
 import com.ornet.hrms.repository.EnquiryRepository
 import com.ornet.hrms.viewmodel.EnquiryViewModel
 import com.ornet.hrms.viewmodel.MainViewModel
@@ -33,7 +35,7 @@ class EnquiryAssignedList : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_enquiry_assigned_list)
         progress = ProgressDialog(this)
         //val viewModelFactory = EnquiryViewModelFactory(repository, )
-        enquiryViewModel = ViewModelProvider(this).get(EnquiryViewModel::class.java)
+        enquiryViewModel = ViewModelProvider(this)[EnquiryViewModel::class.java]
         adapter = EnquiryPagingAdapter()
 
         binding.rvEnquiry.layoutManager = LinearLayoutManager(this)
@@ -42,7 +44,7 @@ class EnquiryAssignedList : BaseActivity() {
 
         enquiryViewModel.list.observe(this, Observer {
             adapter.submitData(lifecycle, it)
-            adapter.notifyDataSetChanged()
+            //adapter.notifyDataSetChanged()
         })
 
         toolbarHandle()

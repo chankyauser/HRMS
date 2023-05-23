@@ -122,6 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
+                    android:id="@+id/recordfound"
                     android:text="Showing 50 records out of 150"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#2196F3"
@@ -138,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                tools:itemCount="6"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_assigned_calls" />
         </LinearLayout>
 

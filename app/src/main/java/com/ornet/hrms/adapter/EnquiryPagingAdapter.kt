@@ -24,7 +24,7 @@ class EnquiryPagingAdapter :
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
         val item = getItem(position)
         if (item != null) {
-            holder.number.text = item.mobileNo
+            holder.number.text = "${(position+1)} " + item.mobileNo
             holder.name.text = item.candidateName
         }
     }
