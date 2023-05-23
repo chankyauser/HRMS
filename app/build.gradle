@@ -6,9 +6,10 @@ plugins {
 }
 android {
     compileSdk 33
+    namespace 'com.ornet.hrms'
 
     defaultConfig {
-        applicationId "com.aq.assignment"
+        applicationId "com.ornet.hrms"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -24,16 +25,28 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '1.8'
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
-    namespace 'com.aq.assignment'
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+    }
+
 }
 
 dependencies {
@@ -99,4 +112,17 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
+
+
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.15'
+    implementation 'org.apache.httpcomponents:httpmime:4.5.6'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+
+    //chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+
+    //paging
+    implementation "androidx.paging:paging-runtime:3.0.1"
 }

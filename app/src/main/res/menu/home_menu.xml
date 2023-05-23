@@ -4,6 +4,6 @@
     <item
         android:id="@+id/notification"
         android:icon="@drawable/ic_bell"
-        android:title="@string/notification"
+        android:title="notification"
         app:showAsAction="ifRoom" />
 </menu>
